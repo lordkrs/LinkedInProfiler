@@ -1,0 +1,163 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Linkedin Profiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+
+<body background="css/background.jpg">
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form id="upload" action="/upload" method="post" enctype="multipart/form-data">
+                    <h1>Search by uploading xls or xlsx</h1><br/><br/><br/><br/>
+                    <table style="width:100%">
+                        <!-- <tr>
+                            <td>
+                                From Date-<input id="from_date" type="date" name="from_date"  placeholder="from_date" size="0" />
+                            </td>
+                            <td>
+                                To Date-<input id="to_date" type="date" name="to_date"   placeholder="to_date" />
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <!-- <td>
+                                Search Type-&nbsp;&nbsp;&nbsp;&nbsp;<select name="search_type" id="search_type" value="Pubmed">
+                                        <option value="Pubmed">Pubmed</option>
+                                        <option value="Clinical Trails">Clinical Trails</option>
+                                </select>                           
+                            </td> -->
+                            <td>
+                                Max Rows(per Sheets)-<input id="sheet_len" type="text"  name="sheet_len" value="10000"   placeholder="sheet_len" autocomplete="on"/>                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td> Upload File:<input id="file" type="file" name="upload" class="field-style field-split align-left" placeholder="upload" accept=".xls,.xlsx"  required/>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button>Upload And Search</button>
+                            </td>
+                            <td>
+                                <button type="reset" value="Reset">Reset</button>
+                            </td>
+                        </tr>          
+                    </table>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form id="search" action="/search"  method="post">
+                    <h1>Search By Name</h1>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <input id="Name" type="text" name="Name"  placeholder="Name" autocomplete="on" size="0" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="FirstName" type="text" name="FirstName"    placeholder="FirstName" autocomplete="on"/>
+                            </td>
+                            <td>
+                                <input id="Initial" type="text" name="Initial"    placeholder="Initial" autocomplete="on"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="Lastname" type="text" name="Lastname"    placeholder="Lastname" autocomplete="on"/>
+                            </td>
+                            <td>
+                                <input id="Uid" type="text" name="Uid"   placeholder="Uid" autocomplete="on" required/>            
+                            </td>
+                        </tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr>
+                            <td>
+                                Search Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="search_type" id="search_type" value="Pubmed">
+                                        <option value="Pubmed">Pubmed</option>
+                                        <option value="Clinical Trails">Clinical Trails</option>
+                                </select>                           
+                            </td>
+                            <td>
+                                     
+                            </td>
+                        </tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+ 
+                        <tr>
+                            <td>
+                                From Date-<input id="from_date" type="date" name="from_date"  placeholder="from_date" size="0" />
+                            </td>
+                            <td>
+                                To Date-<input id="to_date" type="date" name="to_date"   placeholder="to_date" />
+                            </td>
+                        </tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr>
+                            <td>
+                                Max Rows(per Sheets)-<input id="sheet_len" type="text"  name="sheet_len" value="50000"   placeholder="sheet_len" autocomplete="on"/>
+                            </td>
+                            <td>
+                                Max Records-<input id="records" type="text"  name="records" value="4000"   placeholder="records" autocomplete="on"/>            
+                            </td>
+                        </tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr><td></td><td> </td></tr>
+                        <tr>
+                            <td>
+                                <button>Search</button>
+                            </td>
+                            <td>
+                                <button type="reset" value="Reset">Reset</button>
+                            </td>
+                        </tr>                               
+                    </table>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <script>
+                        const container = document.getElementById('container');
+                        function search(){
+                            container.classList.remove("right-panel-active");
+                        }
+                        function upload(){
+                            container.classList.add("right-panel-active");
+                        }
+                </script>                
+                    
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Want to Search Single Name?</h1>
+                        <p>Search Here</p>
+                        <button class="ghost" id="signIn" onclick="search()">Search</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Want to Search Multiple Names?</h1>
+                        <p>Then Upload xlsx</p>
+                        <button class="ghost" id="upload1" onclick="upload()">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</body>
+</html>
